@@ -1,16 +1,16 @@
-# DiagNO: Diagonal Spherical Neural Operators for Heterogeneous Earth Dynamics Modeling
+# DIAGNO: Diagonal Spherical Neural Operators for Heterogeneous Earth Dynamics Modeling
 
-**Official implementation of DiagNO — NeurIPS 2026 Main Track (Oral)**
+**Official implementation of DIAGNO — NeurIPS 2026 Main Track (Oral)**
 
-This repository provides the official implementation of **DiagNO (Diagonal Spherical Neural Operator)**, a neural operator designed for heterogeneous Earth dynamics modeling. It includes the model architecture, training and inference pipelines, experimental configurations, and utilities for spherical fluid dynamics simulations.
+This repository provides the official implementation of **DIAGNO (Diagonal Spherical Neural Operator)**, a neural operator designed for heterogeneous Earth dynamics modeling. It includes the model architecture, training and inference pipelines, experimental configurations, and utilities for spherical fluid dynamics simulations.
 
-DiagNO is evaluated on simulated Spherical Shallow Water Equations (SSWE) and real-world Earth system reanalysis datasets, including ERA5 atmospheric data and GLORYS12 oceanic data.
+DIAGNO is evaluated on simulated Spherical Shallow Water Equations (SSWE) and real-world Earth system reanalysis datasets, including ERA5 atmospheric data and GLORYS12 oceanic data.
 
 ## Overview
 
-Conventional rotation-equivariant spherical neural operators typically restrict spectral modes to isolated evolution, limiting their ability to capture heterogeneous Earth dynamics. **DiagNO** addresses this limitation by explicitly modeling cross-modal interactions in the spherical spectral domain.
+Conventional rotation-equivariant spherical neural operators typically restrict spectral modes to isolated evolution, limiting their ability to capture heterogeneous Earth dynamics. **DIAGNO** addresses this limitation by explicitly modeling cross-modal interactions in the spherical spectral domain.
 
-By exploiting the unique diagonal structure of the spherical harmonic spectrum, DiagNO introduces **intra- and inter-diagonal interaction mechanisms** to efficiently characterize zonal and meridional dynamics. This structured spectral modeling approach enables accurate and physically consistent forecasting across diverse geophysical scenarios.
+By exploiting the unique diagonal structure of the spherical harmonic spectrum, DIAGNO introduces **intra- and inter-diagonal interaction mechanisms** to efficiently characterize zonal and meridional dynamics. This structured spectral modeling approach enables accurate and physically consistent forecasting across diverse geophysical scenarios.
 
 The framework is evaluated on three representative tasks:
 
@@ -39,7 +39,7 @@ The project separates training configurations from model architecture definition
 Global execution settings and training hyperparameters are configured in the training shell script.
 
 - **`ROOT_PATH`**: Output directory for model checkpoints, training logs, and statistics.
-- **`MODELS`**: A space-separated list of model variants to train sequentially (e.g., `diagno_e128`).
+- **`MODELS`**: A space-separated list of model variants to train sequentially (e.g., `DIAGNO_e128`).
 - **`EPOCHS`**: Training duration, including `PRETRAIN_EPOCHS` for one-step pretraining and `FINETUNE_EPOCHS` for two-step autoregressive fine-tuning.
 - **Learning Rates**: Independent learning rates for pretraining and fine-tuning.
 - **Hardware Setup**: Configure `CUDA_VISIBLE_DEVICES` and `nproc_per_node` according to the available GPU resources.
@@ -48,7 +48,7 @@ Please ensure that the number of distributed processes matches the allocated GPU
 
 ### 2. Model Architecture (`model_registry.py`)
 
-The architectural configurations of DiagNO variants are defined in the `model_registry.py` module.
+The architectural configurations of DIAGNO variants are defined in the `model_registry.py` module.
 
 These configurations control model capacity and structure, including embedding dimensions, hidden feature dimensions, and hierarchical network settings.
 
@@ -170,7 +170,7 @@ Any redistributed or adapted third-party components remain subject to their resp
 
 ## Environment Setup
 
-This section provides instructions for configuring the Python environment required to run DiagNO.
+This section provides instructions for configuring the Python environment required to run DIAGNO.
 
 The reference environment uses **Python 3.10**, **PyTorch 2.4.0**, and **CUDA 12.1**, together with scientific computing, geospatial processing, and machine learning libraries.
 
@@ -188,11 +188,11 @@ Before installation, ensure that your system meets the following requirements:
 
 **Step 1: Create and Activate the Conda Environment**
 
-Create a dedicated Python environment named `diagno_env`:
+Create a dedicated Python environment named `DIAGNO_env`:
 
 ```bash
-conda create -n diagno_env python=3.10 -y
-conda activate diagno_env
+conda create -n DIAGNO_env python=3.10 -y
+conda activate DIAGNO_env
 ```
 
 **Step 2: Install Core Scientific and Geospatial Packages**
@@ -287,8 +287,8 @@ Email: li-herui@sjtu.edu.cn
 If you find our work useful in your research, please consider citing our paper:
 
 ```bibtex
-@inproceedings{li2026diagno,
-  title     = {{DiagNO}: Diagonal Spherical Neural Operators for Heterogeneous Earth Dynamics Modeling},
+@inproceedings{li2026DIAGNO,
+  title     = {{DIAGNO}: Diagonal Spherical Neural Operators for Heterogeneous Earth Dynamics Modeling},
   author    = {Herui Li and Bin Lu and Haonan Qi and Lei Zhou and Luoyi Fu and Xinbing Wang and Meng Jin},
   booktitle = {Advances in Neural Information Processing Systems},
   year      = {2026}
